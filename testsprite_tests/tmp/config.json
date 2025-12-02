@@ -1,0 +1,17 @@
+{
+  "status": "commited",
+  "type": "backend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:4000/C:\\Users\\SOPAN\\Desktop\\mini project\\urbanstich\\backend",
+  "backendAuthType": "public",
+  "executionArgs": {
+    "projectName": "mini project",
+    "projectPath": "C:\\Users\\SOPAN\\Desktop\\mini project",
+    "testIds": [],
+    "additionalInstruction": "",
+    "envs": {
+      "API_KEY": "sk-user-u2APhD-tkDXZQQONZk6XrkUP_fl_Mw5am7F7eGAM6p2WvBPh490hG1xTcCbTHomOKw9NGuZqVIfk0Che-JoojysJ6bBPMIyw6bYcl-t1fco_Ty7Y4ET417NgbOA77nkyW1g"
+    }
+  },
+  "proxy": "http://87ca1c93-78a1-442a-923d-676b72f6defd:d8rRLh7cgYo9puTm0cgsPA0WQDhKZS3L@tun.testsprite.com:8080"
+}

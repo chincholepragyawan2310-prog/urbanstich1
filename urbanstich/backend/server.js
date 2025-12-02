@@ -29,24 +29,24 @@ if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
 // In-memory data
 const products = [
   // T-Shirts (8 products - different colors)
-  { id: 'p1',  title: 'Classic Tee - White',  price: 19.99, image: 'https://images.bewakoof.com/original/men-s-white-t-shirt-mt3290b-601824-1687785224-1.jpg', category: 't-shirts' },
-  { id: 'p2',  title: 'Classic Tee - Black',  price: 19.99, image: 'https://handcmediastorage.blob.core.windows.net/productimages/TH/THPZA001-A01-170421-1400px-1820px.jpg', category: 't-shirts' },
-  { id: 'p3',  title: 'Classic Tee - Navy',   price: 21.99, image: 'https://placehold.co/800x800/001f3f/FFFFFF?text=Navy+Tee', category: 't-shirts' },
-  { id: 'p4',  title: 'Classic Tee - Olive',  price: 21.99, image: 'https://placehold.co/800x800/556B2F/FFFFFF?text=Olive+Tee',  category: 't-shirts' },
-  { id: 'p5',  title: 'Classic Tee - Grey',   price: 18.99, image: 'https://placehold.co/800x800/808080/FFFFFF?text=Grey+Tee', category: 't-shirts' },
-  { id: 'p6',  title: 'Classic Tee - Maroon', price: 21.99, image: 'https://placehold.co/800x800/800000/FFFFFF?text=Maroon+Tee', category: 't-shirts' },
-  { id: 'p7',  title: 'Classic Tee - Red', price: 22.99, image: 'https://placehold.co/800x800/FF0000/FFFFFF?text=Red+Tee', category: 't-shirts' },
-  { id: 'p8',  title: 'Classic Tee - Blue', price: 20.99, image: 'https://placehold.co/800x800/0000FF/FFFFFF?text=Blue+Tee', category: 't-shirts' },
+  { id: 'p1',  title: 'Classic Tee - White',  price: 199.99, image: 'https://images.bewakoof.com/original/men-s-white-t-shirt-mt3290b-601824-1687785224-1.jpg', category: 't-shirts' },
+  { id: 'p2',  title: 'Classic Tee - Black',  price: 199.99, image: 'https://handcmediastorage.blob.core.windows.net/productimages/TH/THPZA001-A01-170421-1400px-1820px.jpg', category: 't-shirts' },
+  { id: 'p3',  title: 'Classic Tee - Navy',   price: 219.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/navy_blue_plain_t-shirt_men_base_700x933.jpg', category: 't-shirts' },
+  { id: 'p4',  title: 'Classic Tee - Olive',  price: 219.99, image: 'https://tearbird.com/wp-content/uploads/2023/09/Olive-Green.png', category: 't-shirts' },
+  { id: 'p5',  title: 'Classic Tee - Grey',   price: 189.99, image: 'https://i5.walmartimages.com/seo/Gildan-Men-Grey-T-Shirts-Value-Pack-Shirts-Single-OR-6-12-T-shirts-Gray-T-shirt-Casual-Shirt-Basic_cc967d88-fc47-4877-91d1-49a929f89718.3feb7f05585289862b2c8f3f26ec47d3.jpeg', category: 't-shirts' },
+  { id: 'p6',  title: 'Classic Tee - Maroon', price: 219.99, image: 'https://tse4.mm.bing.net/th/id/OIP.3Lt1xfzBrFppdFHiqpNHlAHaI4?rs=1&pid=ImgDetMain&o=7&rm=3', category: 't-shirts' },
+  { id: 'p7',  title: 'Classic Tee - Red', price: 229.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/red_plain_t-shirt_men_base_700x933.jpg', category: 't-shirts' },
+  { id: 'p8',  title: 'Classic Tee - Blue', price: 209.99, image: 'https://i.pinimg.com/originals/99/04/9f/99049fc9fe55dbecb498657fcfefe208.jpg', category: 't-shirts' },
 
   // Shirts (8 products - different colors)
-  { id: 'p9',  title: 'Linen Shirt - Sky Blue',  price: 39.99, image: 'https://placehold.co/800x800/87CEEB/000000?text=Sky+Blue+Shirt', category: 'shirts' },
-  { id: 'p10', title: 'Linen Shirt - White',     price: 39.99, image: 'https://placehold.co/800x800/FFFFFF/000000?text=White+Shirt', category: 'shirts' },
-  { id: 'p11', title: 'Oxford Shirt - Navy',     price: 44.99, image: 'https://placehold.co/800x800/001f3f/FFFFFF?text=Navy+Shirt', category: 'shirts' },
-  { id: 'p12', title: 'Oxford Shirt - Pink',     price: 44.99, image: 'https://placehold.co/800x800/FF69B4/000000?text=Pink+Shirt', category: 'shirts' },
-  { id: 'p13', title: 'Checked Shirt - Green',   price: 42.99, image: 'https://placehold.co/800x800/228B22/FFFFFF?text=Green+Shirt', category: 'shirts' },
-  { id: 'p14', title: 'Denim Shirt - Indigo',    price: 46.99, image: 'https://placehold.co/800x800/4B0082/FFFFFF?text=Indigo+Shirt', category: 'shirts' },
-  { id: 'p15', title: 'Casual Shirt - Burgundy', price: 43.99, image: 'https://placehold.co/800x800/800020/FFFFFF?text=Burgundy+Shirt', category: 'shirts' },
-  { id: 'p16', title: 'Formal Shirt - Beige', price: 45.99, image: 'https://placehold.co/800x800/F5F5DC/000000?text=Beige+Shirt', category: 'shirts' },
+  { id: 'p9',  title: 'Linen Shirt - Sky Blue',  price: 399.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/sky_blue_linen_shirt_men_base_700x933.jpg', category: 'shirts' },
+  { id: 'p10', title: 'Linen Shirt - White',     price: 399.99, image: 'https://placehold.co/800x800/FFFFFF/000000?text=White+Shirt', category: 'shirts' },
+  { id: 'p11', title: 'Oxford Shirt - Navy',     price: 449.99, image: 'https://placehold.co/800x800/001f3f/FFFFFF?text=Navy+Shirt', category: 'shirts' },
+  { id: 'p12', title: 'Oxford Shirt - Pink',     price: 449.99, image: 'https://placehold.co/800x800/FF69B4/000000?text=Pink+Shirt', category: 'shirts' },
+  { id: 'p13', title: 'Checked Shirt - Green',   price: 425.99, image: 'https://placehold.co/800x800/228B22/FFFFFF?text=Green+Shirt', category: 'shirts' },
+  { id: 'p14', title: 'Denim Shirt - Indigo',    price: 469.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/indigo_denim_shirt_men_base_700x933.jpg', category: 'shirts' },
+  { id: 'p15', title: 'Casual Shirt - Burgundy', price: 439.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/burgundy_casual_shirt_men_base_700x933.jpg', category: 'shirts' },
+  { id: 'p16', title: 'Formal Shirt - Beige', price: 459.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/beige_formal_shirt_men_base_700x933.jpg', category: 'shirts' },
 
   // Jeans (8 products - different colors)
   { id: 'p17', title: 'Denim Jeans - Dark Blue', price: 49.99, image: 'https://placehold.co/800x800/0A2342/FFFFFF?text=Dark+Blue+Jeans', category: 'jeans' },
@@ -113,7 +113,18 @@ app.get(api + '/orders', (req, res) => {
   const token = auth.startsWith('Bearer ') ? auth.slice(7) : null;
   const user = token ? makeAuth(token) : null;
   if (!user) return res.status(401).json({ error: 'Unauthorized' });
-  const userOrders = orders.get(user.id) || [];
+  
+  // Get orders from user-specific Map
+  let userOrders = orders.get(user.id) || [];
+  
+  // Also check allOrders for any orders with this user's ID (for backward compatibility)
+  // This ensures we don't miss any orders
+  for (const [orderId, order] of allOrders.entries()) {
+    if (order.userId === user.id && !userOrders.find(o => o.id === orderId || o.orderId === orderId)) {
+      userOrders.push(order);
+    }
+  }
+  
   res.json({ orders: userOrders });
 });
 
@@ -148,6 +159,11 @@ app.post(api + '/checkout', (req, res) => {
 app.post(api + '/orders', (req, res) => {
   const { items } = req.body || {};
   
+  // Get authenticated user (optional - orders can be created without auth, but will be linked if auth provided)
+  const auth = req.headers.authorization || '';
+  const token = auth.startsWith('Bearer ') ? auth.slice(7) : null;
+  const user = token ? makeAuth(token) : null;
+  
   if (!Array.isArray(items) || items.length === 0) {
     return res.status(400).json({ error: 'Empty cart' });
   }
@@ -177,18 +193,30 @@ app.post(api + '/orders', (req, res) => {
   
   const order = {
     id: orderId,
+    orderId: orderId, // Add orderId field for consistency with test expectations
     items: withDetails,
     totalAmount: totalAmount,
     status: 'created',
     paymentMethod: null,
     razorpayOrderId: null,
     razorpayPaymentId: null,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
+    userId: user ? user.id : null // Store user ID for reference
   };
   
+  // Store in allOrders (for order lookup by ID)
   allOrders.set(orderId, order);
   
-  console.log(`Order created: ${orderId}, Total: ₹${totalAmount.toFixed(2)}`);
+  // If user is authenticated, also store in user-specific orders Map
+  if (user) {
+    if (!orders.has(user.id)) {
+      orders.set(user.id, []);
+    }
+    orders.get(user.id).push(order);
+    console.log(`Order created: ${orderId}, Total: ₹${totalAmount.toFixed(2)}, User: ${user.email}`);
+  } else {
+    console.log(`Order created: ${orderId}, Total: ₹${totalAmount.toFixed(2)} (unauthenticated)`);
+  }
   
   res.json({ 
     orderId, 
@@ -214,7 +242,10 @@ app.post(api + '/payment/create-razorpay-order', async (req, res) => {
   }
   
   if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
-    return res.status(500).json({ error: 'Razorpay credentials not configured' });
+    return res.status(500).json({ 
+      error: 'Razorpay credentials not configured',
+      message: 'Please configure RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in your .env file to enable payment processing'
+    });
   }
   
   try {
@@ -265,7 +296,10 @@ app.post(api + '/payment/verify', (req, res) => {
   }
   
   if (!process.env.RAZORPAY_KEY_SECRET) {
-    return res.status(500).json({ error: 'Razorpay secret not configured' });
+    return res.status(500).json({ 
+      error: 'Razorpay secret not configured',
+      message: 'Please configure RAZORPAY_KEY_SECRET in your .env file to enable payment verification'
+    });
   }
   
   // Verify signature
@@ -325,9 +359,21 @@ app.post(api + '/orders/:id/cod-confirm', (req, res) => {
   });
 });
 
+// Email validation regex pattern
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
 app.post(api + '/newsletter/subscribe', (req, res) => {
   const { email } = req.body || {};
   if (!email) return res.status(400).json({ error: 'Email required' });
+  
+  // Validate email format
+  if (!isValidEmail(email)) {
+    return res.status(400).json({ error: 'Invalid email format' });
+  }
+  
   res.json({ ok: true });
 });
 

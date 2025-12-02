@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - UrbanStich</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16 items-center">
+                <a href="/" class="text-2xl font-bold text-gray-900">
+                    URBAN<span class="text-orange-500">STICH</span>
+                </a>
+                <a href="/" class="text-gray-600 hover:text-black">← Back to Shopping</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Payment Page -->
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-8">Complete Your Order</h1>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Order Summary -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold mb-4">Order Summary</h2>
+                <div id="orderSummary" class="space-y-4">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Order ID</span>
+                        <span id="orderId" class="font-semibold">-</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Items</span>
+                        <span id="itemCount" class="font-semibold">0</span>
+                    </div>
+                    <div class="border-t pt-4">
+                        <div class="flex justify-between text-lg font-bold">
+                            <span>Total Amount</span>
+                            <span id="totalAmount" class="text-orange-500">₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Items List -->
+                <div id="orderItems" class="mt-6 space-y-3">
+                    <!-- Items will be populated here -->
+                </div>
+            </div>
+
+            <!-- Payment Method Selection -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold mb-6">Select Payment Method</h2>
+
+                <div class="space-y-4 mb-6">
+                    <!-- Razorpay Option -->
+                    <label class="flex items-center p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition payment-option border-orange-500 bg-orange-50" data-method="razorpay">
+                        <input type="radio" name="paymentMethod" value="razorpay" class="mr-4 w-5 h-5 text-orange-500" checked>
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg">Pay Online (Razorpay)</div>
+                            <div class="text-sm text-gray-600">Pay securely using Credit/Debit Card, UPI, Net Banking</div>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </label>
+
+                    <!-- COD Option -->
+                    <label class="flex items-center p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition payment-option" data-method="cod">
+                        <input type="radio" name="paymentMethod" value="cod" class="mr-4 w-5 h-5 text-orange-500">
+                        <div class="flex-1">
+                            <div class="font-semibold text-lg">Cash On Delivery (COD)</div>
+                            <div class="text-sm text-gray-600">Pay when you receive your order</div>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </label>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0 mt-6">
+                    <button
+                        id="payNowBtn"
+                        class="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-4 rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                        Continue & Pay
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="window.location.href='/'"
+                        class="flex-1 border border-gray-300 text-gray-700 hover:bg-gray-100 font-semibold py-3 px-4 rounded-lg transition"
+                    >
+                        Back to Cart
+                    </button>
+                </div>
+
+                <p id="paymentError" class="text-red-500 text-sm mt-3 hidden"></p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./assets/js/payment.js"></script>
+</body>
+</html>
+

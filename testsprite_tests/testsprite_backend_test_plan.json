@@ -1,0 +1,52 @@
+[
+  {
+    "id": "TC001",
+    "title": "get_products_api_should_return_all_products_or_filtered_by_category",
+    "description": "Test the /api/products GET endpoint to ensure it returns all products when no category filter is applied and correctly filters products by valid categories such as t-shirts, shirts, jeans, and jackets."
+  },
+  {
+    "id": "TC002",
+    "title": "user_registration_should_validate_and_register_new_user",
+    "description": "Test the /api/auth/register POST endpoint to verify that it validates required fields (name, email, password), enforces unique email registration, and returns an authentication token and user info upon successful registration."
+  },
+  {
+    "id": "TC003",
+    "title": "user_login_should_authenticate_and_return_token",
+    "description": "Test the /api/auth/login POST endpoint to ensure it authenticates users with valid email and password, returns user info and token on success, and returns an error for invalid credentials."
+  },
+  {
+    "id": "TC004",
+    "title": "get_user_orders_should_return_authenticated_users_orders",
+    "description": "Test the /api/orders GET endpoint to verify it returns only the orders belonging to the authenticated user and enforces proper authentication with a valid token."
+  },
+  {
+    "id": "TC005",
+    "title": "create_order_should_validate_and_create_order_from_cart_items",
+    "description": "Test the /api/orders POST endpoint to ensure it validates the cart items for non-empty and valid products, creates a new order with correct total calculation, and returns the order ID and total amount."
+  },
+  {
+    "id": "TC006",
+    "title": "create_razorpay_order_should_create_payment_order_or_fail_gracefully",
+    "description": "Test the /api/payment/create-razorpay-order POST endpoint to verify it creates a Razorpay payment order for a valid order ID, handles missing or already processed orders with appropriate errors, and returns Razorpay order details on success."
+  },
+  {
+    "id": "TC007",
+    "title": "verify_payment_should_validate_signature_and_update_order_status",
+    "description": "Test the /api/payment/verify POST endpoint to ensure it validates the Razorpay payment signature, updates the order status upon successful verification, and handles missing data, invalid signatures, or missing orders with proper error responses."
+  },
+  {
+    "id": "TC008",
+    "title": "confirm_cod_order_should_update_order_status_or_prevent_reprocessing",
+    "description": "Test the /api/orders/{id}/cod-confirm POST endpoint to verify it confirms a Cash on Delivery order by updating the order status, prevents re-processing of already processed orders, and returns appropriate success or error messages."
+  },
+  {
+    "id": "TC009",
+    "title": "newsletter_subscription_should_validate_email_and_store_subscription",
+    "description": "Test the /api/newsletter/subscribe POST endpoint to ensure it validates the email format, stores the subscription correctly, and returns success or error responses for missing or invalid emails."
+  },
+  {
+    "id": "TC010",
+    "title": "legacy_checkout_should_process_checkout_or_return_error_for_empty_cart",
+    "description": "Test the /api/checkout POST endpoint to verify it processes legacy checkout requests with cart items, returns order ID and total on success, and returns an error when the cart is empty."
+  }
+]

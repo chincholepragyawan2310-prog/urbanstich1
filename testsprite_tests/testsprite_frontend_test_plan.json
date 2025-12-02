@@ -1,0 +1,704 @@
+[
+  {
+    "id": "TC001",
+    "title": "Retrieve all products without filter",
+    "description": "Verify that the API returns all products when no category filter is applied",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send GET request to /api/products without query parameters"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response contains a products array including products from all categories"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Retrieve products filtered by valid category",
+    "description": "Verify that the API returns products filtered by each valid category: t-shirts, shirts, jeans, jackets",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "For each valid category, send GET request to /api/products?category={category}"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all returned products belong to the requested category"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Retrieve products with invalid category filter",
+    "description": "Verify API behavior when an invalid category filter is provided in the query",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send GET request to /api/products?category=invalidcategory"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status code indicates error or returns empty products list"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "User registration with valid data",
+    "description": "Verify user registration succeeds with valid name, email, and password",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST request to /api/auth/register with valid name, unique email, and password"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response contains an authentication token and user object with name and email"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "User registration with missing required fields",
+    "description": "Verify user registration fails with missing name, email, or password",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST request to /api/auth/register with missing one or more required fields"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 400 Bad Request"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "User registration with already registered email",
+    "description": "Verify system rejects registration when email is already registered",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Register a user with a valid email"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to register again using the same email"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify second response status is 400 Bad Request with appropriate error message"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "User login with correct credentials",
+    "description": "Verify user can login successfully with valid email and password",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Register user to ensure account exists"
+      },
+      {
+        "type": "action",
+        "description": "Send POST request to /api/auth/login with correct email and password"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response contains a valid token and user info"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "User login with incorrect credentials",
+    "description": "Verify login fails with invalid email or password",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST request to /api/auth/login with valid email and incorrect password"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 401 Unauthorized"
+      },
+      {
+        "type": "action",
+        "description": "Send POST request to /api/auth/login with unregistered email"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 401 Unauthorized"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Add items to cart, update quantities and remove items",
+    "description": "Verify cart operations: adding products with size and quantity, updating quantity, removing items, and total recalculation",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as authenticated user"
+      },
+      {
+        "type": "action",
+        "description": "Add a product with size and quantity to cart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the cart contains the item with correct quantity and calculated subtotal"
+      },
+      {
+        "type": "action",
+        "description": "Update the quantity of an existing cart item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the cart updates quantities and recalculates totals correctly"
+      },
+      {
+        "type": "action",
+        "description": "Remove an item from the cart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the cart no longer contains the removed item and totals update accordingly"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Order creation with valid cart items",
+    "description": "Verify creating an order from valid cart items returns order ID and total",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as user"
+      },
+      {
+        "type": "action",
+        "description": "Add valid products with sizes and quantities to cart"
+      },
+      {
+        "type": "action",
+        "description": "Send POST request to /api/orders with cart items"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response contains new orderId and total amount"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Order creation with empty or invalid cart",
+    "description": "Verify order creation fails when cart is empty or contains invalid product IDs",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Attempt to create order with empty items array"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 400 Bad Request"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to create order with invalid product IDs"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 400 Bad Request"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Create Razorpay order with valid order ID",
+    "description": "Verify creating Razorpay payment order for an existing order returns correct payment details",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Create a valid order"
+      },
+      {
+        "type": "action",
+        "description": "Send POST request to /api/payment/create-razorpay-order with valid orderId"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK and contains Razorpay order details including key, amount, currency, razorpayOrderId, and orderId"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Create Razorpay order with missing or processed order ID",
+    "description": "Verify the API rejects missing orderId and orders that are already processed",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST request to /api/payment/create-razorpay-order without orderId"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 400 Bad Request"
+      },
+      {
+        "type": "action",
+        "description": "Send POST request with orderId of an order already processed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 400 Bad Request"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Create Razorpay order with non-existing order ID",
+    "description": "Verify API returns 404 Not Found for razorpay order creation with invalid order ID",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST request to /api/payment/create-razorpay-order with non-existent orderId"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 404 Not Found"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Verify Razorpay payment with valid signature",
+    "description": "Verify payment signature validation and order status update works with valid payment data",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Create Razorpay order and obtain payment IDs and signature"
+      },
+      {
+        "type": "action",
+        "description": "Send POST request to /api/payment/verify with valid orderId, razorpay_order_id, razorpay_payment_id, and razorpay_signature"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK and success is true with confirmation message and orderId"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Verify Razorpay payment with missing or invalid signature data",
+    "description": "Verify API rejects payment verification requests missing required fields or with invalid signatures",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST request to /api/payment/verify with missing required payment fields"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 400 Bad Request"
+      },
+      {
+        "type": "action",
+        "description": "Send POST request with invalid signature"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 400 Bad Request"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Verify Razorpay payment with non-existing order",
+    "description": "Verify API returns 404 Not Found when verifying payment for non-existent order ID",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST request to /api/payment/verify with invalid orderId"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 404 Not Found"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Confirm Cash on Delivery (COD) order",
+    "description": "Verify confirming a COD order updates order status and returns success",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Create COD order"
+      },
+      {
+        "type": "action",
+        "description": "Send POST request to /api/orders/{id}/cod-confirm with valid order ID"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK with success true, message, and orderId"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Confirm COD order already processed",
+    "description": "Verify API returns 400 Bad Request when attempting to confirm COD order that is already processed",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Confirm a COD order"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to confirm the same COD order again"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 400 Bad Request with appropriate error message"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Confirm COD order with invalid order ID",
+    "description": "Verify API returns 404 Not Found when confirming COD order with non-existent ID",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST to /api/orders/{id}/cod-confirm with invalid order ID"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 404 Not Found"
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "User order history retrieval with authentication",
+    "description": "Verify that authenticated user can retrieve only their orders with accurate status",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as user"
+      },
+      {
+        "type": "action",
+        "description": "Send GET request to /api/orders with valid authentication token"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response contains only orders belonging to the authenticated user"
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "User order history retrieval unauthorized access",
+    "description": "Verify that unauthenticated requests to order history are rejected",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send GET request to /api/orders without authentication token"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 401 Unauthorized"
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "Newsletter subscription with valid email",
+    "description": "Verify subscribing to newsletter with valid email succeeds",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST request to /api/newsletter/subscribe with valid email"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK and subscription success flag is true"
+      }
+    ]
+  },
+  {
+    "id": "TC024",
+    "title": "Newsletter subscription with invalid or missing email",
+    "description": "Verify API rejects subscription requests with missing or badly formatted emails",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST request to /api/newsletter/subscribe with empty or invalid email format"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 400 Bad Request"
+      }
+    ]
+  },
+  {
+    "id": "TC025",
+    "title": "Legacy checkout API succeeds with valid cart items",
+    "description": "Verify legacy checkout endpoint processes valid items and returns order ID and total",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST request to /api/checkout with valid items array"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response contains orderId and total amount"
+      }
+    ]
+  },
+  {
+    "id": "TC026",
+    "title": "Legacy checkout API fails with empty cart",
+    "description": "Verify legacy checkout API returns error when items array is empty",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Send POST request to /api/checkout with empty items array"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 400 Bad Request"
+      }
+    ]
+  },
+  {
+    "id": "TC027",
+    "title": "Admin access control for protected routes",
+    "description": "Verify that admin routes for product and order management require admin role and reject unauthorized users",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Attempt to access admin product and order management endpoints without authentication"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 401 Unauthorized or 403 Forbidden"
+      },
+      {
+        "type": "action",
+        "description": "Login as non-admin user and access same endpoints"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 403 Forbidden"
+      },
+      {
+        "type": "action",
+        "description": "Login as admin user and access endpoints"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify response status is 200 OK and functionalities are accessible"
+      }
+    ]
+  },
+  {
+    "id": "TC028",
+    "title": "Admin product management CRUD operations",
+    "description": "Verify admin can create, retrieve, update, and delete products",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as admin user"
+      },
+      {
+        "type": "action",
+        "description": "Create a new product with all required fields"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify product creation successful and product details returned"
+      },
+      {
+        "type": "action",
+        "description": "Retrieve product details by ID"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the product details match the created product"
+      },
+      {
+        "type": "action",
+        "description": "Update product information such as price or title"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify product details updated successfully"
+      },
+      {
+        "type": "action",
+        "description": "Delete the product"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify product is removed and no longer retrievable"
+      }
+    ]
+  },
+  {
+    "id": "TC029",
+    "title": "Admin order status and inventory management",
+    "description": "Verify admin can update order statuses and manage inventory appropriately",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as admin user"
+      },
+      {
+        "type": "action",
+        "description": "Retrieve an existing order"
+      },
+      {
+        "type": "action",
+        "description": "Update order status (e.g., from pending to shipped)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify order status update is successful"
+      },
+      {
+        "type": "action",
+        "description": "Adjust product inventory related to orders"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify inventory reflects changes accordingly"
+      }
+    ]
+  },
+  {
+    "id": "TC030",
+    "title": "UI responsiveness and error display",
+    "description": "Verify UI behaves responsively across devices and displays error messages gracefully for bad inputs or failures",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Access the site on desktop, tablet, and mobile viewports"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify layout adapts correctly and remains usable"
+      },
+      {
+        "type": "action",
+        "description": "Trigger validation errors like submitting empty registration or login forms"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify error messages are displayed clearly and UI does not crash"
+      },
+      {
+        "type": "action",
+        "description": "Try accessing admin UI section as unauthorized user"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify admin routes redirect or show access denied"
+      }
+    ]
+  }
+]
