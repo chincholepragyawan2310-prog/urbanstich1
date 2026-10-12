@@ -13,7 +13,7 @@
 
 ## 🌐 Live Demo & Preview
 
-- **Live Application:** [https://urbanstitch.onrender.com] *(Replace with your deployed Render URL)*
+- **Live Application:** [https://urbanstich1.onrender.com/] *(Replace with your deployed Render URL)*
 - **API Base URL:** `https://urbanstitch.onrender.com/api`
 
 ---
