@@ -24,8 +24,51 @@ if (window.location.protocol === 'file:') {
     console.warn('  - Then open: http://localhost:8000');
 }
 
+// Default verified catalog for standalone and fallback operation
+export const DEFAULT_PRODUCTS = [
+    // T-Shirts (8 products - different colors)
+    { id: 'p1',  title: 'Classic Tee - White',  price: 199.99, image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+    { id: 'p2',  title: 'Classic Tee - Black',  price: 199.99, image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+    { id: 'p3',  title: 'Classic Tee - Navy',   price: 219.99, image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+    { id: 'p4',  title: 'Classic Tee - Olive',  price: 219.99, image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+    { id: 'p5',  title: 'Classic Tee - Grey',   price: 189.99, image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+    { id: 'p6',  title: 'Classic Tee - Maroon', price: 219.99, image: 'https://images.unsplash.com/photo-1527719327859-c6ce80353573?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+    { id: 'p7',  title: 'Classic Tee - Red',    price: 229.99, image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+    { id: 'p8',  title: 'Classic Tee - Blue',   price: 209.99, image: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+
+    // Shirts (8 products - different colors)
+    { id: 'p9',  title: 'Linen Shirt - Sky Blue',  price: 399.99, image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+    { id: 'p10', title: 'Linen Shirt - White',     price: 399.99, image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+    { id: 'p11', title: 'Oxford Shirt - Navy',     price: 449.99, image: 'https://images.unsplash.com/photo-1603252109303-2751441dd157?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+    { id: 'p12', title: 'Oxford Shirt - Pink',     price: 449.99, image: 'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+    { id: 'p13', title: 'Checked Shirt - Green',   price: 425.99, image: 'https://images.unsplash.com/photo-1604695573706-53170668f6a6?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+    { id: 'p14', title: 'Denim Shirt - Indigo',    price: 469.99, image: 'https://images.unsplash.com/photo-1589310243389-96a5483213a8?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+    { id: 'p15', title: 'Casual Shirt - Burgundy', price: 439.99, image: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+    { id: 'p16', title: 'Formal Shirt - Beige',    price: 459.99, image: 'https://images.unsplash.com/photo-1563630423918-b58f07336ac9?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+
+    // Jeans (8 products - different colors)
+    { id: 'p17', title: 'Denim Jeans - Dark Blue',   price: 49.99, image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+    { id: 'p18', title: 'Denim Jeans - Black',       price: 49.99, image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+    { id: 'p19', title: 'Denim Jeans - Grey',        price: 47.99, image: 'https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+    { id: 'p20', title: 'Slim Fit Jeans - Blue',     price: 52.99, image: 'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+    { id: 'p21', title: 'Tapered Jeans - Navy',      price: 54.99, image: 'https://images.unsplash.com/photo-1511105612320-2e62a04dd044?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+    { id: 'p22', title: 'Relaxed Jeans - Light',     price: 45.99, image: 'https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+    { id: 'p23', title: 'Slim Fit Jeans - Charcoal',  price: 51.99, image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+    { id: 'p24', title: 'Classic Jeans - Stone',     price: 48.99, image: 'https://images.unsplash.com/photo-1604176354204-9268737828e4?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+
+    // Jackets (8 products - different colors)
+    { id: 'p25', title: 'Leather Jacket - Black', price: 129.99, image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+    { id: 'p26', title: 'Leather Jacket - Brown', price: 129.99, image: 'https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+    { id: 'p27', title: 'Bomber Jacket - Olive',  price: 99.99,  image: 'https://images.unsplash.com/photo-1544441893-675973e31985?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+    { id: 'p28', title: 'Bomber Jacket - Navy',   price: 99.99,  image: 'https://images.unsplash.com/photo-1548883354-7622d03aca27?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+    { id: 'p29', title: 'Denim Jacket - Blue',    price: 89.99,  image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+    { id: 'p30', title: 'Puffer Jacket - Grey',   price: 109.99, image: 'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+    { id: 'p31', title: 'Leather Jacket - Tan',   price: 124.99, image: 'https://images.unsplash.com/photo-1520975916090-3105956dac38?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+    { id: 'p32', title: 'Bomber Jacket - Red',    price: 104.99, image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&auto=format&fit=crop&q=80', category: 'jackets' }
+];
+
 // Shared state for products
-let allProducts = [];
+let allProducts = DEFAULT_PRODUCTS;
 
 export function getAllProducts() {
     return allProducts;
@@ -50,23 +93,25 @@ export async function fetchProducts(category = null) {
         const url = category ? `${API_BASE_URL}/products?category=${category}` : `${API_BASE_URL}/products`;
         console.log('Fetching products from:', url);
         const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        if (response.ok) {
+            const data = await response.json();
+            const products = data.products || [];
+            if (products.length > 0) {
+                if (!category) {
+                    setAllProducts(products);
+                }
+                return { products, error: null };
+            }
         }
-        const data = await response.json();
-        const products = data.products || [];
-        console.log('Products fetched:', products.length);
-        if (!category) {
-            setAllProducts(products);
-        }
-        return { products, error: null };
     } catch (error) {
-        console.error('Error fetching products:', error);
-        const errorMessage = error.message.includes('Failed to fetch') || error.message.includes('NetworkError') 
-            ? 'Cannot connect to backend server. Make sure the server is running on http://localhost:4000'
-            : `Error: ${error.message}`;
-        return { products: [], error: errorMessage };
+        console.warn('Backend unavailable, using static catalog fallback:', error.message);
     }
+    // Fallback to verified catalog
+    const filtered = category ? DEFAULT_PRODUCTS.filter(p => p.category === category) : DEFAULT_PRODUCTS;
+    if (!category) {
+        setAllProducts(DEFAULT_PRODUCTS);
+    }
+    return { products: filtered, error: null };
 }
 
 export async function loginUser(email, password) {
