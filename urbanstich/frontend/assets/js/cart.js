@@ -27,8 +27,8 @@ export function updateCartUI() {
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const subtotalEl = document.getElementById('cartSubtotal');
     const totalEl = document.getElementById('cartTotal');
-    if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-    if (totalEl) totalEl.textContent = `$${subtotal.toFixed(2)}`;
+    if (subtotalEl) subtotalEl.textContent = `₹${subtotal.toFixed(2)}`;
+    if (totalEl) totalEl.textContent = `₹${subtotal.toFixed(2)}`;
 
     renderCartItems();
 }
@@ -48,7 +48,7 @@ export function renderCartItems() {
             <div class="flex-1">
                 <h4 class="font-semibold">${item.title}</h4>
                 <p class="text-sm text-gray-600">Size: ${item.size || 'M'}</p>
-                <p class="text-orange-500 font-bold">$${(item.price * item.quantity).toFixed(2)}</p>
+                <p class="text-orange-500 font-bold">₹${(item.price * item.quantity).toFixed(2)}</p>
             </div>
             <div class="flex items-center space-x-2">
                 <button class="cart-decrease-btn px-2 py-1 border rounded hover:bg-gray-100" data-index="${index}">-</button>

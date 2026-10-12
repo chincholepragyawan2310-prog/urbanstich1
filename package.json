@@ -1,0 +1,30 @@
+{
+  "name": "urbanstitch",
+  "version": "1.0.0",
+  "description": "UrbanStitch - Full Stack Men's Fashion E-Commerce Platform",
+  "main": "urbanstich/backend/server.js",
+  "scripts": {
+    "start": "node urbanstich/backend/server.js",
+    "dev": "node urbanstich/backend/server.js",
+    "backend": "node urbanstich/backend/server.js",
+    "frontend": "node urbanstich/frontend/server.js",
+    "install:all": "npm --prefix urbanstich/backend install && npm --prefix urbanstich/frontend install"
+  },
+  "keywords": [
+    "ecommerce",
+    "fashion",
+    "express",
+    "nodejs",
+    "razorpay"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "nanoid": "^5.1.6",
+    "razorpay": "^2.9.2"
+  }
+}

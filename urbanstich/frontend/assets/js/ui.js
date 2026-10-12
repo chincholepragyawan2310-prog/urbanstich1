@@ -69,7 +69,7 @@ export async function renderProducts(category = null) {
             </div>
             <div class="p-4">
                 <h3 class="font-semibold mb-2">${product.title}</h3>
-                <p class="text-orange-500 font-bold">$${product.price ? product.price.toFixed(2) : '0.00'}</p>
+                <p class="text-orange-500 font-bold">₹${product.price ? product.price.toFixed(2) : '0.00'}</p>
                 <button class="add-to-cart-btn mt-4 w-full bg-black text-white py-2 rounded hover:bg-gray-800" data-product-id="${product.id}">Add to Cart</button>
             </div>
         </div>

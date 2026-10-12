@@ -1,5 +1,13 @@
-// API Configuration
-export const API_BASE_URL = 'http://localhost:4000/api';
+// Dynamic API Configuration
+// 1. Explicit window override (e.g., set via script or production config)
+// 2. If running locally on separate frontend port 3000, connect to backend at localhost:4000/api
+// 3. In production or unified host, use same-origin relative path /api
+const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+export const API_BASE_URL = (typeof window !== 'undefined' && window.API_BASE_URL) || (
+    isLocalhost && window.location.port === '3000'
+        ? 'http://localhost:4000/api'
+        : (typeof window !== 'undefined' && window.location.origin ? `${window.location.origin}/api` : 'http://localhost:4000/api')
+);
 
 // Log configuration
 console.log('🔧 Frontend Configuration:');
@@ -137,9 +145,11 @@ export async function checkout(items, authToken) {
 // Create order (new payment flow)
 export async function createOrder(items) {
     try {
+        const authToken = localStorage.getItem('authToken');
+        const headers = getAuthHeaders(authToken);
         const response = await fetch(`${API_BASE_URL}/orders`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: headers,
             body: JSON.stringify({
                 items: items.map(item => ({ 
                     productId: item.productId, 
