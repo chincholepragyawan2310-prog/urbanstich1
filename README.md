@@ -13,18 +13,11 @@
 
 ## 🌐 Live Demo & Preview
 
-- **Live Application:** [https://urbanstitch.onrender.com](https://urbanstitch.onrender.com) *(Replace with your deployed Render URL)*
+- **Live Application:** [https://urbanstitch.onrender.com] *(Replace with your deployed Render URL)*
 - **API Base URL:** `https://urbanstitch.onrender.com/api`
 
 ---
 
-## 📸 Screenshots
-
-| Home & Product Catalog | Shopping Cart & Checkout |
-|:---:|:---:|
-| ![Product Catalog](https://via.placeholder.com/600x350/0f172a/ffffff?text=UrbanStitch+Catalog) | ![Shopping Cart](https://via.placeholder.com/600x350/0f172a/ffffff?text=UrbanStitch+Checkout) |
-
----
 
 ## ✨ Features
 
