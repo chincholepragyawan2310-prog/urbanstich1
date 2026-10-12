@@ -21,6 +21,11 @@ app.get('/', (req, res) => {
   res.sendFile(indexPath);
 });
 
+// Serve payment.html for checkout and payment routes
+app.get(['/checkout', '/payment'], (req, res) => {
+  res.sendFile(path.join(frontendPath, 'payment.html'));
+});
+
 // Serve static files (CSS, JS, etc.)
 app.use(express.static(frontendPath));
 

@@ -42,44 +42,44 @@ if (razorpayKeyId && razorpayKeySecret) {
 // In-memory data
 const products = [
   // T-Shirts (8 products - different colors)
-  { id: 'p1',  title: 'Classic Tee - White',  price: 199.99, image: 'https://images.bewakoof.com/original/men-s-white-t-shirt-mt3290b-601824-1687785224-1.jpg', category: 't-shirts' },
-  { id: 'p2',  title: 'Classic Tee - Black',  price: 199.99, image: 'https://handcmediastorage.blob.core.windows.net/productimages/TH/THPZA001-A01-170421-1400px-1820px.jpg', category: 't-shirts' },
-  { id: 'p3',  title: 'Classic Tee - Navy',   price: 219.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/navy_blue_plain_t-shirt_men_base_700x933.jpg', category: 't-shirts' },
-  { id: 'p4',  title: 'Classic Tee - Olive',  price: 219.99, image: 'https://tearbird.com/wp-content/uploads/2023/09/Olive-Green.png', category: 't-shirts' },
-  { id: 'p5',  title: 'Classic Tee - Grey',   price: 189.99, image: 'https://i5.walmartimages.com/seo/Gildan-Men-Grey-T-Shirts-Value-Pack-Shirts-Single-OR-6-12-T-shirts-Gray-T-shirt-Casual-Shirt-Basic_cc967d88-fc47-4877-91d1-49a929f89718.3feb7f05585289862b2c8f3f26ec47d3.jpeg', category: 't-shirts' },
-  { id: 'p6',  title: 'Classic Tee - Maroon', price: 219.99, image: 'https://tse4.mm.bing.net/th/id/OIP.3Lt1xfzBrFppdFHiqpNHlAHaI4?rs=1&pid=ImgDetMain&o=7&rm=3', category: 't-shirts' },
-  { id: 'p7',  title: 'Classic Tee - Red', price: 229.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/red_plain_t-shirt_men_base_700x933.jpg', category: 't-shirts' },
-  { id: 'p8',  title: 'Classic Tee - Blue', price: 209.99, image: 'https://i.pinimg.com/originals/99/04/9f/99049fc9fe55dbecb498657fcfefe208.jpg', category: 't-shirts' },
+  { id: 'p1',  title: 'Classic Tee - White',  price: 199.99, image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+  { id: 'p2',  title: 'Classic Tee - Black',  price: 199.99, image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+  { id: 'p3',  title: 'Classic Tee - Navy',   price: 219.99, image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+  { id: 'p4',  title: 'Classic Tee - Olive',  price: 219.99, image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+  { id: 'p5',  title: 'Classic Tee - Grey',   price: 189.99, image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+  { id: 'p6',  title: 'Classic Tee - Maroon', price: 219.99, image: 'https://images.unsplash.com/photo-1527719327859-c6ce80353573?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+  { id: 'p7',  title: 'Classic Tee - Red',    price: 229.99, image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
+  { id: 'p8',  title: 'Classic Tee - Blue',   price: 209.99, image: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&auto=format&fit=crop&q=80', category: 't-shirts' },
 
   // Shirts (8 products - different colors)
-  { id: 'p9',  title: 'Linen Shirt - Sky Blue',  price: 399.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/sky_blue_linen_shirt_men_base_700x933.jpg', category: 'shirts' },
-  { id: 'p10', title: 'Linen Shirt - White',     price: 399.99, image: 'https://placehold.co/800x800/FFFFFF/000000?text=White+Shirt', category: 'shirts' },
-  { id: 'p11', title: 'Oxford Shirt - Navy',     price: 449.99, image: 'https://placehold.co/800x800/001f3f/FFFFFF?text=Navy+Shirt', category: 'shirts' },
-  { id: 'p12', title: 'Oxford Shirt - Pink',     price: 449.99, image: 'https://placehold.co/800x800/FF69B4/000000?text=Pink+Shirt', category: 'shirts' },
-  { id: 'p13', title: 'Checked Shirt - Green',   price: 425.99, image: 'https://placehold.co/800x800/228B22/FFFFFF?text=Green+Shirt', category: 'shirts' },
-  { id: 'p14', title: 'Denim Shirt - Indigo',    price: 469.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/indigo_denim_shirt_men_base_700x933.jpg', category: 'shirts' },
-  { id: 'p15', title: 'Casual Shirt - Burgundy', price: 439.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/burgundy_casual_shirt_men_base_700x933.jpg', category: 'shirts' },
-  { id: 'p16', title: 'Formal Shirt - Beige', price: 459.99, image: 'https://www.beyoung.in/api/cache/catalog/products/plain_new_update_images/beige_formal_shirt_men_base_700x933.jpg', category: 'shirts' },
+  { id: 'p9',  title: 'Linen Shirt - Sky Blue',  price: 399.99, image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+  { id: 'p10', title: 'Linen Shirt - White',     price: 399.99, image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+  { id: 'p11', title: 'Oxford Shirt - Navy',     price: 449.99, image: 'https://images.unsplash.com/photo-1603252109303-2751441dd157?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+  { id: 'p12', title: 'Oxford Shirt - Pink',     price: 449.99, image: 'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+  { id: 'p13', title: 'Checked Shirt - Green',   price: 425.99, image: 'https://images.unsplash.com/photo-1604695573706-53170668f6a6?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+  { id: 'p14', title: 'Denim Shirt - Indigo',    price: 469.99, image: 'https://images.unsplash.com/photo-1589310243389-96a5483213a8?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+  { id: 'p15', title: 'Casual Shirt - Burgundy', price: 439.99, image: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
+  { id: 'p16', title: 'Formal Shirt - Beige',    price: 459.99, image: 'https://images.unsplash.com/photo-1563630423918-b58f07336ac9?w=800&auto=format&fit=crop&q=80', category: 'shirts' },
 
   // Jeans (8 products - different colors)
-  { id: 'p17', title: 'Denim Jeans - Dark Blue', price: 49.99, image: 'https://placehold.co/800x800/0A2342/FFFFFF?text=Dark+Blue+Jeans', category: 'jeans' },
-  { id: 'p18', title: 'Denim Jeans - Black',     price: 49.99, image: 'https://placehold.co/800x800/000000/FFFFFF?text=Black+Jeans', category: 'jeans' },
-  { id: 'p19', title: 'Denim Jeans - Grey',      price: 47.99, image: 'https://placehold.co/800x800/808080/FFFFFF?text=Grey+Jeans',  category: 'jeans' },
-  { id: 'p20', title: 'Slim Fit Jeans - Blue',   price: 52.99, image: 'https://placehold.co/800x800/1E90FF/000000?text=Blue+Jeans', category: 'jeans' },
-  { id: 'p21', title: 'Tapered Jeans - Navy',    price: 54.99, image: 'https://placehold.co/800x800/001f3f/FFFFFF?text=Navy+Jeans', category: 'jeans' },
-  { id: 'p22', title: 'Relaxed Jeans - Light',   price: 45.99, image: 'https://placehold.co/800x800/ADD8E6/000000?text=Light+Jeans',   category: 'jeans' },
-  { id: 'p23', title: 'Slim Fit Jeans - Charcoal', price: 51.99, image: 'https://placehold.co/800x800/36454F/FFFFFF?text=Charcoal+Jeans', category: 'jeans' },
-  { id: 'p24', title: 'Classic Jeans - Stone', price: 48.99, image: 'https://placehold.co/800x800/928E85/FFFFFF?text=Stone+Jeans', category: 'jeans' },
+  { id: 'p17', title: 'Denim Jeans - Dark Blue',   price: 49.99, image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+  { id: 'p18', title: 'Denim Jeans - Black',       price: 49.99, image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+  { id: 'p19', title: 'Denim Jeans - Grey',        price: 47.99, image: 'https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+  { id: 'p20', title: 'Slim Fit Jeans - Blue',     price: 52.99, image: 'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+  { id: 'p21', title: 'Tapered Jeans - Navy',      price: 54.99, image: 'https://images.unsplash.com/photo-1511105612320-2e62a04dd044?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+  { id: 'p22', title: 'Relaxed Jeans - Light',     price: 45.99, image: 'https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+  { id: 'p23', title: 'Slim Fit Jeans - Charcoal',  price: 51.99, image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
+  { id: 'p24', title: 'Classic Jeans - Stone',     price: 48.99, image: 'https://images.unsplash.com/photo-1604176354204-9268737828e4?w=800&auto=format&fit=crop&q=80', category: 'jeans' },
 
   // Jackets (8 products - different colors)
-  { id: 'p25', title: 'Leather Jacket - Black', price: 129.99, image: 'https://placehold.co/800x800/000000/FFFFFF?text=Black+Jacket', category: 'jackets' },
-  { id: 'p26', title: 'Leather Jacket - Brown', price: 129.99, image: 'https://placehold.co/800x800/8B4513/FFFFFF?text=Brown+Jacket', category: 'jackets' },
-  { id: 'p27', title: 'Bomber Jacket - Olive',  price: 99.99,  image: 'https://placehold.co/800x800/556B2F/FFFFFF?text=Olive+Jacket', category: 'jackets' },
-  { id: 'p28', title: 'Bomber Jacket - Navy',   price: 99.99,  image: 'https://placehold.co/800x800/001f3f/FFFFFF?text=Navy+Jacket', category: 'jackets' },
-  { id: 'p29', title: 'Denim Jacket - Blue',    price: 89.99,  image: 'https://placehold.co/800x800/1E3A8A/FFFFFF?text=Blue+Denim+Jacket', category: 'jackets' },
-  { id: 'p30', title: 'Puffer Jacket - Grey',   price: 109.99, image: 'https://placehold.co/800x800/808080/FFFFFF?text=Grey+Jacket', category: 'jackets' },
-  { id: 'p31', title: 'Leather Jacket - Tan', price: 124.99, image: 'https://placehold.co/800x800/D2B48C/000000?text=Tan+Jacket', category: 'jackets' },
-  { id: 'p32', title: 'Bomber Jacket - Red', price: 104.99, image: 'https://placehold.co/800x800/DC143C/FFFFFF?text=Red+Jacket', category: 'jackets' }
+  { id: 'p25', title: 'Leather Jacket - Black', price: 129.99, image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+  { id: 'p26', title: 'Leather Jacket - Brown', price: 129.99, image: 'https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+  { id: 'p27', title: 'Bomber Jacket - Olive',  price: 99.99,  image: 'https://images.unsplash.com/photo-1544441893-675973e31985?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+  { id: 'p28', title: 'Bomber Jacket - Navy',   price: 99.99,  image: 'https://images.unsplash.com/photo-1548883354-7622d03aca27?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+  { id: 'p29', title: 'Denim Jacket - Blue',    price: 89.99,  image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+  { id: 'p30', title: 'Puffer Jacket - Grey',   price: 109.99, image: 'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+  { id: 'p31', title: 'Leather Jacket - Tan',   price: 124.99, image: 'https://images.unsplash.com/photo-1520975916090-3105956dac38?w=800&auto=format&fit=crop&q=80', category: 'jackets' },
+  { id: 'p32', title: 'Bomber Jacket - Red',    price: 104.99, image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&auto=format&fit=crop&q=80', category: 'jackets' }
 ];
 
 const users = new Map(); // email -> { id, name, email, passwordHash }
@@ -403,6 +403,95 @@ app.post(api + '/newsletter/subscribe', (req, res) => {
   }
   
   res.json({ ok: true });
+});
+
+// Explicit routes for checkout and payment
+app.get(['/checkout', '/payment', '/placeorder'], (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/payment.html'));
+});
+
+// Legacy API compatibility endpoints (handles requests from older frontend builds)
+app.get(['/api/products/lists', api + '/products/lists'], (req, res) => {
+  res.json({ success: true, products });
+});
+
+app.post(['/api/order/place', api + '/order/place'], (req, res) => {
+  const body = req.body?.data || req.body || {};
+  const orderId = 'ORD-' + nanoid();
+  const total = Number(body.amount) || 0;
+  const order = {
+    id: orderId,
+    orderId,
+    items: body.items || [],
+    totalAmount: total,
+    status: 'placed',
+    paymentMethod: 'COD',
+    address: body.address || {},
+    createdAt: new Date().toISOString()
+  };
+  allOrders.set(orderId, order);
+  res.json({ success: true, message: 'Order Placed', orderId });
+});
+
+app.post(['/api/order/payssl', api + '/order/payssl'], (req, res) => {
+  const payload = req.body?.data || req.body || {};
+  const total = Number(payload.amount) || 0;
+  const orderId = 'ORD-' + nanoid();
+  const order = {
+    id: orderId,
+    orderId,
+    items: payload.items || [],
+    totalAmount: total,
+    status: 'created',
+    paymentMethod: 'online',
+    address: payload.address || {},
+    createdAt: new Date().toISOString()
+  };
+  allOrders.set(orderId, order);
+  res.json({ 
+    success: true, 
+    paymentUrl: `/payment.html?orderId=${orderId}&amount=${total}`,
+    orderId,
+    amount: total
+  });
+});
+
+app.post(['/api/user/login', api + '/user/login'], (req, res) => {
+  const { email, password } = req.body || {};
+  const user = users.get(email);
+  if (!user || user.passwordHash !== password) {
+    const newUser = { id: nanoid(), name: email?.split('@')[0] || 'User', email, passwordHash: password };
+    users.set(email, newUser);
+    const token = nanoid();
+    tokens.set(token, newUser.id);
+    return res.json({ success: true, message: 'User logged in successfully', token });
+  }
+  const token = nanoid();
+  tokens.set(token, user.id);
+  res.json({ success: true, message: 'User logged in successfully', token });
+});
+
+app.post(['/api/user/register', api + '/user/register'], (req, res) => {
+  const { name, email, password } = req.body || {};
+  const user = { id: nanoid(), name: name || 'User', email, passwordHash: password };
+  users.set(email, user);
+  const token = nanoid();
+  tokens.set(token, user.id);
+  res.json({ success: true, message: 'User registered successfully', token });
+});
+
+app.post(['/api/order/userorders', api + '/order/userorders'], (req, res) => {
+  res.json({ success: true, orders: [...allOrders.values()] });
+});
+
+app.post(['/api/cart/get', api + '/cart/get'], (req, res) => {
+  res.json({ success: true, cartData: {} });
+});
+app.post(['/api/cart/add', api + '/cart/add'], (req, res) => {
+  res.json({ success: true, message: 'Added to cart' });
+});
+app.post(['/api/cart/update', api + '/cart/update'], (req, res) => {
+  res.json({ success: true, message: 'Cart updated' });
 });
 
 // Fallback route: serve frontend for client navigation (Express 5 compatible)

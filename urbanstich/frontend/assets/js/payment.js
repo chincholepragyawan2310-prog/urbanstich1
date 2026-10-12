@@ -18,6 +18,24 @@ function loadOrder() {
         orderData = null;
     }
 
+    // Fallback: If currentOrder is missing, reconstruct from active cart
+    if (!orderData || !orderData.items || orderData.items.length === 0) {
+        try {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length > 0) {
+                const subtotal = cart.reduce((sum, item) => sum + (Number(item.price) || 0) * (Number(item.quantity) || 1), 0);
+                orderData = {
+                    orderId: 'ORD-' + Math.random().toString(36).substring(2, 9).toUpperCase(),
+                    total: subtotal,
+                    items: cart
+                };
+                localStorage.setItem('currentOrder', JSON.stringify(orderData));
+            }
+        } catch (e) {
+            console.error('Cart fallback error:', e);
+        }
+    }
+
     if (!orderData || !orderData.items || orderData.items.length === 0) {
         orderIdEl.textContent = '-';
         itemCountEl.textContent = '0';
@@ -38,25 +56,29 @@ function loadOrder() {
     itemCountEl.textContent = itemCount;
     totalAmountEl.textContent = `₹${totalAmountNumber.toFixed(2)}`;
 
-    // Render items
+    // Render items with thumbnail images
     orderItemsEl.innerHTML = '';
     orderData.items.forEach((item) => {
         const title = item.title || `Item`;
         const price = Number(item.price) || 0;
         const quantity = Number(item.quantity) || 1;
         const size = item.size || null;
+        const img = item.image || '';
 
         const itemRow = document.createElement('div');
         itemRow.className = 'flex justify-between items-center border-b pb-2 last:border-b-0';
 
         itemRow.innerHTML = `
-            <div>
-                <div class="font-semibold text-gray-800">${title}</div>
-                <div class="text-xs text-gray-500">
-                    Qty ${quantity}${size ? ` • Size ${size}` : ''}
+            <div class="flex items-center space-x-3">
+                ${img ? `<img src="${img}" alt="${title}" class="w-12 h-12 object-cover rounded shadow-sm" onerror="this.style.display='none'">` : ''}
+                <div>
+                    <div class="font-semibold text-gray-800 text-sm">${title}</div>
+                    <div class="text-xs text-gray-500">
+                        Qty ${quantity}${size ? ` • Size ${size}` : ''}
+                    </div>
                 </div>
             </div>
-            <div class="font-semibold text-gray-800">
+            <div class="font-semibold text-gray-800 text-sm">
                 ₹${(price * quantity).toFixed(2)}
             </div>
         `;
