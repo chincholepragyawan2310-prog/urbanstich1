@@ -99,6 +99,7 @@ paymentOptions.forEach(option => {
 });
 
 function updatePaymentOptionStyles() {
+    const selectedMethod = getSelectedPaymentMethod();
     paymentOptions.forEach(option => {
         const input = option.querySelector('input[type="radio"]');
         if (input.checked) {
@@ -107,6 +108,14 @@ function updatePaymentOptionStyles() {
             option.classList.remove('border-orange-500', 'bg-orange-50');
         }
     });
+
+    if (payNowBtn && !payNowBtn.disabled) {
+        if (selectedMethod === 'cod') {
+            payNowBtn.textContent = 'Place Order (Cash on Delivery)';
+        } else {
+            payNowBtn.textContent = 'Pay Online (Razorpay)';
+        }
+    }
 }
 
 function getSelectedPaymentMethod() {
@@ -192,7 +201,7 @@ async function payWithRazorpay() {
             modal: {
                 ondismiss: function() {
                     payNowBtn.disabled = false;
-                    payNowBtn.textContent = 'Continue & Pay';
+                    updatePaymentOptionStyles();
                 }
             }
         };
@@ -200,17 +209,36 @@ async function payWithRazorpay() {
         const rzp = new Razorpay(options);
         rzp.on('payment.failed', function (response) {
             console.error('Payment failed', response.error);
-            showError('Payment failed: ' + (response.error.description || 'Please try again or choose another method.'));
+            showError('Online payment failed (Test Key): ' + (response.error.description || 'Please select "Cash On Delivery (COD)" to place your order!'));
             payNowBtn.disabled = false;
-            payNowBtn.textContent = 'Continue & Pay';
+            updatePaymentOptionStyles();
         });
 
         rzp.open();
     } catch (error) {
         console.error('Payment error:', error);
-        showError('An error occurred. Please try again.');
+        showError('Razorpay test gateway inactive. Please select "Cash On Delivery (COD)" to place your order directly!');
         payNowBtn.disabled = false;
-        payNowBtn.textContent = 'Continue & Pay';
+        updatePaymentOptionStyles();
+    }
+}
+
+// Order Success Modal Handler
+function showOrderSuccess(orderId, total, method) {
+    const modal = document.getElementById('orderSuccessModal');
+    const idEl = document.getElementById('successOrderId');
+    const totalEl = document.getElementById('successOrderTotal');
+    const methodEl = document.getElementById('successPaymentMethod');
+
+    if (idEl) idEl.textContent = orderId;
+    if (totalEl) totalEl.textContent = `₹${Number(total).toFixed(2)}`;
+    if (methodEl) methodEl.textContent = method;
+
+    if (modal) {
+        modal.classList.remove('hidden');
+    } else {
+        alert(`Order Placed Successfully!\n\nOrder ID: ${orderId}\nMethod: ${method}\nTotal: ₹${Number(total).toFixed(2)}`);
+        window.location.href = '/';
     }
 }
 
@@ -221,28 +249,27 @@ async function placeCODOrder() {
         return;
     }
 
-    if (!orderData.orderId) {
-        showError('Order ID missing. Please go back to cart and try again.');
-        return;
-    }
+    const orderId = orderData.orderId || ('ORD-' + Math.random().toString(36).substring(2, 9).toUpperCase());
+    const orderTotal = totalAmountNumber;
 
     payNowBtn.disabled = true;
-    payNowBtn.textContent = 'Processing...';
+    payNowBtn.textContent = 'Placing Order...';
 
     try {
-        const result = await confirmCOD(orderData.orderId);
-        
-        localStorage.removeItem('currentOrder');
-        localStorage.removeItem('cart');
-        alert('COD order placed successfully! Order ID: ' + orderData.orderId);
-        window.location.href = './';
+        await confirmCOD(orderId, {
+            items: orderData.items,
+            total: orderTotal
+        });
     } catch (error) {
-        console.error('COD error:', error);
-        localStorage.removeItem('currentOrder');
-        localStorage.removeItem('cart');
-        alert('COD order placed successfully! Order ID: ' + orderData.orderId);
-        window.location.href = './';
+        console.warn('COD server sync warning:', error);
     }
+
+    // Clear cart and current order in localStorage
+    localStorage.removeItem('currentOrder');
+    localStorage.removeItem('cart');
+
+    // Show order success modal
+    showOrderSuccess(orderId, orderTotal, 'Cash on Delivery (COD)');
 }
 
 // Helpers

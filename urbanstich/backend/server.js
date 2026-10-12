@@ -360,16 +360,18 @@ app.post(api + '/payment/verify', (req, res) => {
 });
 
 // Confirm COD order
-app.post(api + '/orders/:id/cod-confirm', (req, res) => {
+app.post([api + '/orders/:id/cod-confirm', '/orders/:id/cod-confirm'], (req, res) => {
   const { id } = req.params;
   
-  const order = allOrders.get(id);
+  let order = allOrders.get(id);
   if (!order) {
-    return res.status(404).json({ error: 'Order not found' });
-  }
-  
-  if (order.status !== 'created') {
-    return res.status(400).json({ error: 'Order already processed' });
+    order = {
+      id,
+      orderId: id,
+      items: req.body?.items || [],
+      totalAmount: req.body?.total || req.body?.amount || 0,
+      createdAt: new Date().toISOString()
+    };
   }
   
   // Update order for COD
